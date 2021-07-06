@@ -1,1 +1,16 @@
-
+version: 2
+ jobs:
+  build:
+  working_directory: ~/piyumidasanayaka/pythonapplication
+  docker:
+  - image: circleci/python:3.6.4
+  - run:
+        command: |
+          pipenv run python manage.py test  
+          
+          steps:
+          - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: tr1
