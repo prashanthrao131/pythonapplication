@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github
+  labels:
+    app: github
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: github
+  template:
+    metadata:
+      labels:
+        app: github
+    spec:
+      containers:
+        - name: github
+          image: containerstoragee.azurecr.io/image-workflow-1689787042715:latest
+          ports:
+            - containerPort: 8000
